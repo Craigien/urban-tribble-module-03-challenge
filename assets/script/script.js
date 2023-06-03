@@ -84,6 +84,7 @@ function generatePassword()
   if ((!characterTypesAnswers[0]) && (!characterTypesAnswers[1]) && (!characterTypesAnswers[2]) && (!characterTypesAnswers[3]))
   {
     window.alert("Need to select at least one character type to generate a password" + "\nPlease try again.");
+    return;
   }
   else
   {
