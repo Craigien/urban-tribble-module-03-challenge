@@ -72,23 +72,23 @@ function getCharacterTypes ()
   return [lowerCaseAnswer, upperCaseAnswer, numericAnswer, specialCharacterAnswer];
 }
 
+// Generate a random password
 function generatePassword()
 {
   // Get desired number of characters from user
   var charCount = getCharacterCount();
 
-  // Call getCharacterTypes function to get Boolean values
+  // Get desired character types
   var characterTypesAnswers = getCharacterTypes();
 
   // If user does not select any character types
   if ((!characterTypesAnswers[0]) && (!characterTypesAnswers[1]) && (!characterTypesAnswers[2]) && (!characterTypesAnswers[3]))
   {
-    window.alert("Need to select at least one character type to generate a password" + "\nPlease try again.");
+    window.alert("Need to select at least one character type to generate a password.\nPlease try again.");
     return;
   }
   else
   {
-
     // Generate the password
 
     // Empty array to hold password characters
@@ -147,9 +147,3 @@ function writePassword() {
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
-
-// To do
-
-// README
-// .gitignore
-// deploy
