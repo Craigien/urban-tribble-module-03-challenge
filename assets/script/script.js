@@ -8,7 +8,7 @@ var arrayObject = {
   // Numbers
   2: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
   // Special characters
-  3: ["!", "?", "@", "#"]
+  3: ["~", "`", "!", "@", "#", "$", "%", "^", "&", "*", "-", "_", "+", "=", ":", ";", ",", ".", "?"]
 }
 
 // Get desired number of characters from user
@@ -19,7 +19,7 @@ function getCharacterCount()
   {
     var charCount = window.prompt("How many characters should the password be?");
   }
-  while (charCount < "8" && charCount > "128");
+  while (charCount < 8 || charCount > 128);
 
   return charCount;
 }
@@ -145,8 +145,6 @@ generateBtn.addEventListener("click", writePassword);
 
 // To do
 
-// Fix input loop
-// Add special characters
 // Remove console.logs
 // Comments
 // README
