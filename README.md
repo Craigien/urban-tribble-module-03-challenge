@@ -12,7 +12,7 @@ N/A
 
 ## Usage
 
-This application can be accessed at this URL: 
+This application can be accessed at this URL: https://craigien.github.io/urban-tribble-module-03-challenge/
 
 Click on the Generate Password button to begin the process of generating a password.  First, enter the number of characters that you wish for the password to be.
 You are limited to between 8 and 128 characters.  Next, select the types of characters that you would like to use for the password.  After doing so, your password will generate and be displayed.
