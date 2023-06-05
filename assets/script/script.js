@@ -27,20 +27,14 @@ function getCharacterCount()
 // Get desired character types from user
 function getCharacterTypes ()
 {
-  // Confirm with user which character types to use
-  var lowerCaseAnswer = window.confirm("Would you like to use lowercase letters?");
-  if (lowerCaseAnswer)
-  {
-    window.alert("You selected yes to use lowercase letters");
-  }
-  else
-  {
-    window.alert("You selected no to use lowercase letters");
-  }
+  //Empty array to hold characters to use
+  var charactersToUse = [];
 
+  // Confirm with user which character types to use
   var upperCaseAnswer = window.confirm("Would you like to use uppercase letters?");
   if (upperCaseAnswer)
   {
+    charactersToUse.push(...arrayObject[0]);
     window.alert("You selected yes to use uppercase letters");
   }
   else
@@ -48,9 +42,21 @@ function getCharacterTypes ()
     window.alert("You selected no to use uppercase letters");
   }
 
+  var lowerCaseAnswer = window.confirm("Would you like to use lowercase letters?");
+  if (lowerCaseAnswer)
+  {
+    charactersToUse.push(...arrayObject[1]);
+    window.alert("You selected yes to use lowercase letters");
+  }
+  else
+  {
+    window.alert("You selected no to use lowercase letters");
+  }
+
   var numericAnswer = window.confirm("Would you like to use numeric values?");
   if (numericAnswer)
   {
+    charactersToUse.push(...arrayObject[2]);
     window.alert("You selected yes to use numeric characters");
   }
   else
@@ -61,6 +67,7 @@ function getCharacterTypes ()
   var specialCharacterAnswer = window.confirm("Would you like to use special characters");
   if (specialCharacterAnswer)
   {
+    charactersToUse.push(...arrayObject[3]);
     window.alert("You selected yes to use special characters");
   }
   else
@@ -68,8 +75,8 @@ function getCharacterTypes ()
     window.alert("You selected no to use special characters");
   }
 
-  // Return Boolean values as an array
-  return [lowerCaseAnswer, upperCaseAnswer, numericAnswer, specialCharacterAnswer];
+  // Return selected characters to use as an array
+  return charactersToUse;
 }
 
 // Generate a random password
@@ -82,7 +89,7 @@ function generatePassword()
   var characterTypesAnswers = getCharacterTypes();
 
   // If user does not select any character types
-  if ((!characterTypesAnswers[0]) && (!characterTypesAnswers[1]) && (!characterTypesAnswers[2]) && (!characterTypesAnswers[3]))
+  if (characterTypesAnswers == null)
   {
     window.alert("Need to select at least one character type to generate a password.\nPlease try again.");
     return;
@@ -97,35 +104,14 @@ function generatePassword()
     // Generate the number of characters specified by the requested character count
     for (var i = 0; i < charCount; i++)
     {
-      // Flag for do while loop
-      var charFlag = false;
+      // Generate a random number based on the length of the character type array
+      var characterNumber = Math.floor(Math.random() * characterTypesAnswers.length);
 
-      // Iterate until character is successfully added to passwordArray
-      do
-      {
-        // Gets random number between 0 and 3 to select character type
-        var characterType = Math.floor(Math.random() * 4)
+      // Use the randomly generated number to select the character to add to the password from the character type array
+      var character = characterTypesAnswers[characterNumber];
 
-        // If character type is set to true, generate character
-        if (characterTypesAnswers[characterType])
-        {
-          // Generate a random number based on the length of the select character type array
-          var characterNumber = Math.floor(Math.random() * arrayObject[characterType].length);
-
-          // Use the randomly generated number to select the character to add to the password from the character type array in the array object
-          var character = arrayObject[characterType][characterNumber];
-
-          // Add character to the end of the password array
-          passwordArray.push(character);
-          charFlag = true;
-        }
-        // Else randomly select another character type
-        else
-        {
-          continue;
-        }
-      }
-      while (!charFlag);
+      // Add character to the end of the password array
+      passwordArray.push(character);
     }
   }
 
