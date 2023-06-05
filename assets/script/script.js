@@ -89,10 +89,10 @@ function generatePassword()
   var characterTypesAnswers = getCharacterTypes();
 
   // If user does not select any character types
-  if (characterTypesAnswers == null)
+  if (characterTypesAnswers.length === 0)
   {
     window.alert("Need to select at least one character type to generate a password.\nPlease try again.");
-    return;
+    return "Please try again";
   }
   else
   {
